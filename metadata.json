@@ -1,0 +1,6 @@
+{
+  "name": "RTE Product Code Manager",
+  "description": "Kelola, buat, dan susun kode SKU produk Ready-To-Eat (RTE) secara standar otomatis dibantu AI, lengkap dengan kalkulator kedaluwarsa dan label cetak.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

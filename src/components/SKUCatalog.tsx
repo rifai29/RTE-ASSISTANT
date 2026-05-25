@@ -209,17 +209,23 @@ export const SKUCatalog: React.FC<SKUCatalogProps> = ({ products, onDeleteProduc
                     }`}
                   >
                     <div className="space-y-1 min-w-0">
-                      <div className="flex items-center gap-2">
+                      <div className="flex flex-wrap items-center gap-2">
                         <span className={`text-[9px] font-bold tracking-wider px-1.5 py-0.5 rounded uppercase ${
                           p.temp === "CH" ? "bg-blue-100 text-blue-800" : 
                           p.temp === "FR" ? "bg-cyan-100 text-cyan-800" : 
-                          "bg-amber-100 text-amber-800"
+                          p.temp === "WA" ? "bg-amber-100 text-amber-800" :
+                          "bg-emerald-100 text-emerald-800"
                         }`}>
                           {p.temp}
                         </span>
                         <span className="text-[11px] font-mono font-bold text-slate-400 break-all">
                           {p.sku}
                         </span>
+                        {p.pluCode && (
+                          <span className="text-[9px] font-bold bg-slate-100 text-slate-600 border border-slate-200/60 px-1.5 py-0.5 rounded">
+                            PLU: {p.pluCode}
+                          </span>
+                        )}
                       </div>
                       <h4 className="text-xs font-bold text-slate-900 truncate">
                         {p.name}
@@ -279,6 +285,15 @@ export const SKUCatalog: React.FC<SKUCatalogProps> = ({ products, onDeleteProduc
                     <span className="text-slate-400 block font-medium">Standard SKU:</span>
                     <span className="font-mono font-bold text-slate-800 tracking-wider text-sm mt-0.5 block">{selectedProduct.sku}</span>
                   </div>
+                  {selectedProduct.pluCode && (
+                    <div className="col-span-2 bg-blue-50/50 border border-blue-100/40 rounded-xl p-3 flex items-center justify-between">
+                      <div>
+                        <span className="text-slate-500 font-medium text-[10px] uppercase block">Kode Regis PLU Kasir (POS)</span>
+                        <span className="font-mono font-black text-blue-700 text-sm mt-0.5 block">#{selectedProduct.pluCode}</span>
+                      </div>
+                      <span className="text-[10px] bg-blue-100 text-blue-800 px-2 py-0.5 rounded font-bold">Terintegrasi POS</span>
+                    </div>
+                  )}
                   <div className="col-span-2 border-t border-slate-200/60 pt-3">
                     <span className="text-slate-400 block font-medium">Catatan / Instruksi Tambahan:</span>
                     <span className="text-slate-600 leading-relaxed italic block mt-1">

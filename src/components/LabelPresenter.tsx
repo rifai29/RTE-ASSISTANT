@@ -173,6 +173,7 @@ export const LabelPresenter: React.FC<LabelPresenterProps> = ({ product }) => {
             <div class="header">READY-TO-EAT FOOD SAFETY</div>
             <div class="title">${product.name}</div>
             <div class="sku">${product.sku}</div>
+            ${product.pluCode ? `<div style="font-size:12px; font-weight:bold; margin-bottom:8px; border:1px solid #000; padding:2px; background:#f4f4f4;">PLU POS KASIR: #${product.pluCode}</div>` : ""}
             <div class="meta-grid">
               <div class="meta-row"><strong>PROD:</strong> <span>${formattedProd}</span></div>
               <div class="meta-row"><strong>EXPIRY:</strong> <span>${formattedExp}</span></div>
@@ -313,9 +314,14 @@ export const LabelPresenter: React.FC<LabelPresenterProps> = ({ product }) => {
             </h3>
 
             {/* Simulating QR/Barcode code */}
-            <div className="text-center my-3 bg-slate-50 py-1 inline-block w-full border border-slate-100 rounded">
+            <div className="text-center my-3 bg-slate-50 py-1.5 inline-block w-full border border-slate-100 rounded">
               <p className="text-[9px] text-slate-400 tracking-[0.2em] font-normal select-none">||||||||||||||||||||||||||</p>
               <p className="text-[11px] font-bold tracking-wider text-slate-950 mt-0.5">{product.sku}</p>
+              {product.pluCode && (
+                <p className="text-[9px] font-mono font-black text-blue-700 bg-blue-50/70 py-0.5 border border-blue-100/40 rounded mt-1.5 mx-2 uppercase">
+                  PLU KASIR: #{product.pluCode}
+                </p>
+              )}
             </div>
 
             {/* Metadata timings */}

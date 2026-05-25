@@ -35,6 +35,7 @@ export interface SavedRTEProduct {
   id: string;
   name: string;
   sku: string;
+  pluCode?: string; // PLU code for quick cash register scanning
   category: string;
   subCategory: string;
   temp: string;

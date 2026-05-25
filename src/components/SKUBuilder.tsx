@@ -10,6 +10,7 @@ interface SKUBuilderProps {
 export const SKUBuilder: React.FC<SKUBuilderProps> = ({ onSaveProduct }) => {
   // Form States
   const [productName, setProductName] = React.useState("");
+  const [pluCode, setPluCode] = React.useState(""); // PLU code for quick cash register scanning
   const [category, setCategory] = React.useState("FO");
   const [subCategory, setSubCategory] = React.useState("NK");
   const [temp, setTemp] = React.useState("CH");
@@ -125,6 +126,7 @@ export const SKUBuilder: React.FC<SKUBuilderProps> = ({ onSaveProduct }) => {
       id: `rte-${Date.now()}`,
       name: productName,
       sku: skuResult.sku,
+      pluCode: pluCode.trim() || undefined,
       category,
       subCategory,
       temp,
@@ -161,7 +163,7 @@ export const SKUBuilder: React.FC<SKUBuilderProps> = ({ onSaveProduct }) => {
             <div className="md:col-span-2 space-y-2">
               <label className="text-xs font-semibold text-slate-700 flex items-center justify-between">
                 <span>Nama Produk RTE <span className="text-rose-500">*</span></span>
-                <span className="text-[10px] text-slate-400 font-normal">Contoh: Gado-gado Salad Bowl</span>
+                <span className="text-[10px] text-slate-400 font-normal">Contoh: Pop Mie Rasa Soto Cup atau Kopi Espresso Hot</span>
               </label>
               <input
                 type="text"
@@ -170,6 +172,21 @@ export const SKUBuilder: React.FC<SKUBuilderProps> = ({ onSaveProduct }) => {
                 placeholder="Masukkan keterangan ringkas nama makanan/minuman"
                 className="w-full text-sm bg-slate-50/70 border border-slate-200 focus:border-blue-500 focus:bg-white rounded-xl px-4 py-3 outline-none transition focus:ring-2 focus:ring-blue-100 placeholder:text-slate-400 font-medium"
                 required
+              />
+            </div>
+
+            {/* PLU Cashier Code (POS) Input */}
+            <div className="md:col-span-2 space-y-2">
+              <label className="text-xs font-semibold text-slate-700 flex items-center justify-between">
+                <span>Kode PLU Kasir / Mesin POS (Opsional)</span>
+                <span className="text-[10px] text-slate-400 font-normal">Contoh: 5012 untuk Mie Kup, 4001 untuk Arabika</span>
+              </label>
+              <input
+                type="text"
+                value={pluCode}
+                onChange={(e) => setPluCode(e.target.value.replace(/\D/g, ""))}
+                placeholder="Masukkan nomor PLU kasir (misal 5012)"
+                className="w-full text-sm bg-slate-50/70 border border-slate-200 focus:border-blue-500 focus:bg-white rounded-xl px-4 py-3 outline-none transition focus:ring-2 focus:ring-blue-100 placeholder:text-slate-400 font-medium"
               />
             </div>
 

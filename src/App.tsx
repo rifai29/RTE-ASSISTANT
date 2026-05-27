@@ -150,7 +150,7 @@ export default function App() {
       <main className="flex-1 flex flex-col h-full overflow-hidden">
         
         {/* Top Header */}
-        <header className="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-8 shadow-sm flex-shrink-0 z-10">
+        <header className="h-16 bg-white border-b border-slate-200 flex items-center justify-start gap-6 px-8 shadow-sm flex-shrink-0 z-10">
           <div className="flex items-center space-x-3">
             <span className="text-xs bg-blue-50 text-blue-700 border border-blue-200 px-2.5 py-1 rounded-md font-bold tracking-wider uppercase">
               RTE MASTER MANAGER v2.0
